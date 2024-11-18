@@ -6,7 +6,12 @@ import { MdCurrencyExchange } from "react-icons/md";
 import { FaWallet } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
 import { IoIosSettings } from "react-icons/io";
+<<<<<<< HEAD
 // import { IoIosLogOut } from "react-icons/io";
+=======
+import { IoIosLogOut } from "react-icons/io";
+import BitcoinChart from "../components/Chart";
+>>>>>>> 1e099e96028e4dabfdcc56cf6cac005094550c41
 
 const NavList = styled.ul`
   display: flex;
@@ -93,8 +98,9 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/tradeview">
+          <StyledNavLink to="/chart">
             <SiTradingview />
+
             <span>TradeView</span>
           </StyledNavLink>
         </li>

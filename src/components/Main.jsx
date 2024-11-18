@@ -3,6 +3,7 @@ import { FaBitcoin } from "react-icons/fa";
 import "../App.css";
 
 function Main() {
+
   const [prices, setPrices] = useState({
     bitcoin: null,
     tether: null,
@@ -111,6 +112,7 @@ function ShowPriceBitcoin({ bitcoin }) {
           <span className="mr-3">↑</span> {bitcoin}$
         </h1>
       </div>
+>>>>>>> 136e7380329d299d7361955f37faf40a5964939b
     </div>
   );
 }
