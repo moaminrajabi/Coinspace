@@ -1,11 +1,14 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
-    // <div className="container">
-    <div className="text-center text-2xl text-blue-500">سسس</div>
-    // <div className="main"></div>
-    // </div>
+    <div>
+      <Routes>
+        <Route path="/" element={<Overview />} />
+      </Routes>
+    </div>
   );
 }
 
