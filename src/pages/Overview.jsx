@@ -1,8 +1,7 @@
 import React from "react";
-
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
-import Main from "../components/Main";
+import { Outlet } from "react-router-dom";
 
 function Overview() {
   return (
@@ -10,7 +9,9 @@ function Overview() {
       <Header />
       <div className="grid grid-cols-5 gap-2">
         <SideBar />
-        <Main />
+        <main className="col-span-4 p-4">
+          <Outlet />
+        </main>
       </div>
     </div>
   );
