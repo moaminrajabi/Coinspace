@@ -107,7 +107,7 @@ const Header = () => {
           </span>
         </button>
         <img
-          src="https://via.placeholder.com/36"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH0mXlCTPIpCu6Xd2HDPcMmybXzRuvt5lijF5szjMoWS72qDsWBAOpyv9e4_BK1N-DHGk&usqp=CAU"
           alt="Profile"
           className="w-9 h-9 rounded-full shadow-md"
         />
