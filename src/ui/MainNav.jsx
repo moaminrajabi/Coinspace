@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { MdHome } from "react-icons/md";
+import { MdCurrencyExchange } from "react-icons/md";
 
 const NavList = styled.ul`
   display: flex;
@@ -40,7 +42,7 @@ const StyledNavLink = styled(NavLink)`
   &:active svg,
   &.active:link svg,
   &.active:visited svg {
-    color: var(--color-brand-600);
+    color: ;
   }
 `;
 
@@ -50,11 +52,19 @@ function MainNav() {
       <NavList>
         <li>
           <StyledNavLink to="/">
+            <span className="text-xs">
+              <MdHome />
+            </span>
+
             <span>DashBoard</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/">
+            <span className="text-xs">
+              <MdCurrencyExchange />
+            </span>
+
             <span>Exchange</span>
           </StyledNavLink>
         </li>
@@ -74,6 +84,8 @@ function MainNav() {
           </StyledNavLink>
         </li>
       </NavList>
+
+    
     </nav>
   );
 }
