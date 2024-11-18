@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaBitcoin } from "react-icons/fa";
 import "../App.css";
+import { data } from "autoprefixer";
 
 function Main() {
-
   const [prices, setPrices] = useState({
     bitcoin: null,
     tether: null,
@@ -36,6 +36,7 @@ function Main() {
       setLoading(false);
     }
   };
+
   const fetchNews = async () => {
     try {
       const response = await fetch("https://api.coingecko.com/api/v3/news");
@@ -43,10 +44,11 @@ function Main() {
         throw new Error("Failed to fetch news");
       }
       const dataNews = await response.json();
-      console.log(dataNews);  // نمایش داده‌های دریافت شده از API
-      setNews(dataNews); // ذخیره اخبار در state
+      console.log(dataNews); // نمایش ساختار داده‌ها در کنسول
+      // اطمینان از دریافت درست اخبار و ذخیره آنها در state
+      setNews(dataNews || []);
     } catch (error) {
-      console.error("Error fetching news:", error);  // نمایش خطای دریافتی در کنسول
+      console.error("Error fetching news:", error); // نمایش خطا
     }
   };
 
@@ -61,39 +63,34 @@ function Main() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  const khabar = news.data;
+
   return (
-    <div className="container col-span-4 ">
+    <div className="container col-span-4">
       <div className="grid grid-cols-4 gap-4">
         <ShowPriceBitcoin bitcoin={prices.bitcoin} />
         <ShowPricetether tether={prices.tether} />
         <ShowPricedogecoin dogecoin={prices.dogecoin} />
         <ShowPriceshiba shiba={prices.shiba} />
       </div>
-      <div><TradingViewChart /> </div>
+      <div>
+        <TradingViewChart />
+      </div>
       <div className="grid grid-cols-2 gap-4 mt-3">
         <div className="h-60 rounded-lg overflow-auto">
-        {news.length > 0 ? (
-    news.map((n, index) => (
-      <div key={index} className="mb-4 p-2 border-b">
-        <h5 className="text-lg font-bold">{n.title || "No Title"}</h5>
-        <p className="text-gray-600">
-          {n.description || "No description available"}
-        </p>
-        <a
-          href={n.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
-        >
-          Read more
-        </a>
-      </div>
-    ))
-  ) : (
-    <p>No news available</p>
-  )}
+          {khabar ? (
+            khabar.map((n, index) => (
+              <div key={index} className="mb-4 p-2 border-b">
+                <h5 className="text-lg font-bold">{n.title || "No Title"}</h5>
+                <p className="text-gray-600">
+                  {n.description || "No description available"}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>No news available</p>
+          )}
         </div>
-        <div className="mr-2 h-60 rounded-lg">Other Content</div>
       </div>
     </div>
   );
@@ -102,7 +99,7 @@ export default Main;
 
 function ShowPriceBitcoin({ bitcoin }) {
   return (
-    <div className="bg-slate-100 h-24 rounded-lg flex gap-x-12 mr-5">
+    <div className="bg-slate-100 h-24 rounded-lg flex gap-x-1 mr-5">
       <div className="justify-start m-2">
         <FaBitcoin className="font-mono mt-2" size={53} color="#f7931a" />
         <h1 className="price text-[#f7931a] mt-1">Bitcoin</h1>
@@ -112,17 +109,16 @@ function ShowPriceBitcoin({ bitcoin }) {
           <span className="mr-3">↑</span> {bitcoin}$
         </h1>
       </div>
->>>>>>> 136e7380329d299d7361955f37faf40a5964939b
     </div>
   );
 }
 
 function ShowPricetether({ tether }) {
   return (
-    <div className="bg-slate-100 h-24 rounded-lg flex gap-x-12 mr-5">
+    <div className="bg-slate-100 h-24 rounded-lg flex gap-x-1 mr-5">
       <div className="justify-start m-2">
         <img src="../src/assets/825508.png" className="w-12 mt-2" />
-        <h1 className="price text-[#18A27A] mt-2">tether</h1>
+        <h1 className="price text-[#18A27A] mt-2">Tether</h1>
       </div>
       <div className="flex">
         <h1 className="mt-8 mr-2 text-2xl flex text-red-800">
@@ -138,7 +134,7 @@ function ShowPricedogecoin({ dogecoin }) {
     <div className="bg-slate-100 h-24 rounded-lg flex gap-x-1 mr-5">
       <div className="justify-start m-2">
         <img src="../src/assets/6001356.png" className="w-14" />
-        <h1 className="price text-[#EBBF00] mt-2">dogecoin</h1>
+        <h1 className="price text-[#EBBF00] mt-2">Dogecoin</h1>
       </div>
       <div className="flex">
         <h1 className="mt-8 mr-2 text-2xl flex text-red-800">
@@ -154,7 +150,7 @@ function ShowPriceshiba({ shiba }) {
     <div className="bg-slate-100 h-24 rounded-lg flex gap-x-1 mr-5">
       <div className="justify-start m-2">
         <img src="../src/assets/8708467.png" className="w-14" />
-        <h1 className="price text-[#EBBF00] mt-2">shiba</h1>
+        <h1 className="price text-[#EBBF00] mt-2">Shiba</h1>
       </div>
       <div className="flex">
         <h1 className="mt-8 mr-2 text-2xl flex text-green-800">
