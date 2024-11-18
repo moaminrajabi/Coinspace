@@ -42,8 +42,11 @@ function Main() {
         throw new Error("Failed to fetch news");
       }
       const dataNews = await response.json();
-      setNews(dataNews); // ذخیره آرایه اخبار در state
-    } catch (error) {}
+      console.log(dataNews);  // نمایش داده‌های دریافت شده از API
+      setNews(dataNews); // ذخیره اخبار در state
+    } catch (error) {
+      console.error("Error fetching news:", error);  // نمایش خطای دریافتی در کنسول
+    }
   };
 
   useEffect(() => {
@@ -68,26 +71,26 @@ function Main() {
       <div><TradingViewChart /> </div>
       <div className="grid grid-cols-2 gap-4 mt-3">
         <div className="h-60 rounded-lg overflow-auto">
-          {news.length > 0 ? (
-            news.map((n, index) => (
-              <div key={index} className="mb-4 p-2 border-b">
-                <h5 className="text-lg font-bold">{n.title || "No Title"}</h5>
-                <p className="text-gray-600">
-                  {n.description || "No description available"}
-                </p>
-                <a
-                  href={n.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  Read more
-                </a>
-              </div>
-            ))
-          ) : (
-            <p>No news available</p>
-          )}
+        {news.length > 0 ? (
+    news.map((n, index) => (
+      <div key={index} className="mb-4 p-2 border-b">
+        <h5 className="text-lg font-bold">{n.title || "No Title"}</h5>
+        <p className="text-gray-600">
+          {n.description || "No description available"}
+        </p>
+        <a
+          href={n.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          Read more
+        </a>
+      </div>
+    ))
+  ) : (
+    <p>No news available</p>
+  )}
         </div>
         <div className="mr-2 h-60 rounded-lg">Other Content</div>
       </div>

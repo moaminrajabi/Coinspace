@@ -6,7 +6,7 @@ import { MdCurrencyExchange } from "react-icons/md";
 import { FaWallet } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
 import { IoIosSettings } from "react-icons/io";
-import { IoIosLogOut } from "react-icons/io";
+// import { IoIosLogOut } from "react-icons/io";
 
 const NavList = styled.ul`
   display: flex;
