@@ -4,7 +4,7 @@ function Logo() {
   return (
     <div className="h-10 mt-7">
       <span className="pl-8 ">logo</span>
-      <span className="pl-28">CoinSpace</span>
+      <span className="pl-28 pt-5">CoinSpace</span>
     </div>
   );
 }
